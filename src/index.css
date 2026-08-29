@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", "IBM Plex Sans", sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-paper: #edf1ef;
+  --color-panel: #fbfcfb;
+
+  --color-pine-50: #f0f7f4;
+  --color-pine-100: #dbede5;
+  --color-pine-200: #b9dbcd;
+  --color-pine-300: #8cc3ae;
+  --color-pine-400: #5ca58c;
+  --color-pine-500: #3b8870;
+  --color-pine-600: #2a6e59;
+  --color-pine-700: #215947;
+  --color-pine-800: #1b463a;
+  --color-pine-900: #14362c;
+  --color-pine-950: #0a201a;
+
+  --color-ink-900: #13251f;
+  --color-ink-700: #2c423a;
+  --color-ink-500: #54695f;
+  --color-ink-300: #8ba096;
+}
+
+html, body { height: 100%; }
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(1200px 500px at 85% -10%, rgba(42, 110, 89, 0.07), transparent 60%),
+    radial-gradient(900px 400px at -10% 20%, rgba(217, 119, 6, 0.05), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection { background: rgba(42, 110, 89, 0.25); }
+
+* { scrollbar-width: thin; scrollbar-color: #b9c6c0 transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #b9c6c0; border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideRight { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.96) translateY(6px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes dashMove { to { stroke-dashoffset: -240; } }
+@keyframes growBar { from { width: 0; } }
+
+.anim-fade-up { animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in { animation: fadeIn 0.3s ease both; }
+.anim-slide-right { animation: slideRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-pop { animation: popIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-grow-bar { animation: growBar 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pulse-dot { animation: pulseDot 1.6s ease-in-out infinite; }
+.stagger > * { animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.07s; }
+.stagger > *:nth-child(3) { animation-delay: 0.12s; }
+.stagger > *:nth-child(4) { animation-delay: 0.17s; }
+.stagger > *:nth-child(5) { animation-delay: 0.22s; }
+.stagger > *:nth-child(6) { animation-delay: 0.27s; }
+.stagger > *:nth-child(7) { animation-delay: 0.32s; }
+.stagger > *:nth-child(8) { animation-delay: 0.37s; }
+.stagger > *:nth-child(9) { animation-delay: 0.42s; }
+.stagger > *:nth-child(10) { animation-delay: 0.47s; }
+
+.road-anim { stroke-dasharray: 14 18; animation: dashMove 6s linear infinite; }
+
+.num { font-variant-numeric: tabular-nums; }
+
+input[type="date"], input[type="time"] { color-scheme: light; }
+
+#print-root { display: none; }
+@media print {
+  body { background: #fff !important; }
+  #root { display: none !important; }
+  #print-root { display: block !important; color: #111; font-family: "IBM Plex Sans", sans-serif; }
+  #print-root table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  #print-root th, #print-root td { border: 1px solid #999; padding: 5px 8px; text-align: left; }
+  #print-root th { background: #eee; }
+}
